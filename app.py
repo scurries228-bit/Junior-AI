@@ -128,7 +128,8 @@ def chat():
     messages = data.get("messages", [])
     conversation_id = data.get("conversation_id")
 
-    client = Groq(api_key=GROQ_API_KEY)
+    import httpx
+client = Groq(api_key=GROQ_API_KEY, http_client=httpx.Client())
 
     formatted = [{"role": m["role"], "content": m["content"]} for m in messages]
 
